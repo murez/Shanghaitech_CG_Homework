@@ -1,0 +1,12 @@
+/root/murez/cs-171-hw3/CMakeFiles/rebuild_cache.dir
+/root/murez/cs-171-hw3/CMakeFiles/edit_cache.dir
+/root/murez/cs-171-hw3/libs/CMakeFiles/rebuild_cache.dir
+/root/murez/cs-171-hw3/libs/CMakeFiles/edit_cache.dir
+/root/murez/cs-171-hw3/libs/eigen/CMakeFiles/rebuild_cache.dir
+/root/murez/cs-171-hw3/libs/eigen/CMakeFiles/edit_cache.dir
+/root/murez/cs-171-hw3/libs/stb/CMakeFiles/rebuild_cache.dir
+/root/murez/cs-171-hw3/libs/stb/CMakeFiles/edit_cache.dir
+/root/murez/cs-171-hw3/src/CMakeFiles/rebuild_cache.dir
+/root/murez/cs-171-hw3/src/CMakeFiles/render.dir
+/root/murez/cs-171-hw3/src/CMakeFiles/edit_cache.dir
+/root/murez/cs-171-hw3/src/CMakeFiles/main.dir

@@ -1,0 +1,2 @@
+/usr/bin/ar qc librender.a  CMakeFiles/render.dir/camera.cpp.o CMakeFiles/render.dir/film.cpp.o CMakeFiles/render.dir/geometry.cpp.o CMakeFiles/render.dir/integrator.cpp.o CMakeFiles/render.dir/light.cpp.o CMakeFiles/render.dir/material.cpp.o CMakeFiles/render.dir/ray.cpp.o CMakeFiles/render.dir/scene.cpp.o CMakeFiles/render.dir/texture.cpp.o
+/usr/bin/ranlib librender.a

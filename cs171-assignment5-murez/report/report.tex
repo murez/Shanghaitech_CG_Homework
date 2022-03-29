@@ -1,0 +1,100 @@
+\documentclass[acmtog]{acmart}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{natbib}
+\usepackage{listings}
+\usepackage{bm}
+
+\definecolor{blve}{rgb}{0.3372549 , 0.61176471, 0.83921569}
+\definecolor{gr33n}{rgb}{0.29019608, 0.7372549, 0.64705882}
+\makeatletter
+\lst@InstallKeywords k{class}{classstyle}\slshape{classstyle}{}ld
+\makeatother
+\lstset{language=C++,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blve}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{magenta}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	classstyle = \bfseries\color{gr33n}, 
+	tabsize=2
+}
+\lstset{basicstyle=\ttfamily}
+
+% Title portion
+\title{Assignment 5:\\ {Rigid Body Simulation}}
+
+\author{Name:\quad murez  \\ student number:\ 2019533240
+\\email:\quad zhangsy3@shanghaitech.edu.cn}
+
+% Document starts
+\begin{document}
+\maketitle
+
+\vspace*{2 ex}
+
+\section{Introduction}
+\begin{itemize}
+\item Synchronize the simulation and the rendering in OpenGL to show the result in real time.
+\item Implement the collision detection between the parallelograms and the sphere.
+\item Implement the collision adjustment so that the inter-penetration is within the given tolerance (a small threshold).
+\item Implement the colliding contact handling between the the parallelogram and the sphere without consideration of rotation.
+\item Simulate with multiple spheres simultaneously.
+\end{itemize}
+\section{Implementation Details}
+\subsection{movement by time}
+
+\[
+	a = \frac{F}{m}
+\]
+\[
+	v_{t+\Delta t} = v_{t} + \Delta t \cdot a
+\]
+So , we can get the new velocity by adding the acceleration to the old velocity. And get acceleration by the force.
+\subsection{collision detection}
+\subsubsection{parallelogram and sphere}
+Firstly, we need to calculate the distance between the sphere and the parallelogram, and determine whether the distance is shorter than the radius of the sphere which means there may be a collision.
+Secondly, if shorter, we need to know whether the collision point of the sphere and the surface of the parallelogram is inside the parallelogram.
+By judging whether the point is inside the rightangle of the $\mathbf{P_{0}P_{1},P_{0}P_{3}}$
+, and $\mathbf{P_{2}P_{1},P_{2}P_{3}}$
+separately, we can easily tell if the collision point is inside the parallelogram.
+\begin{figure}[h]
+	\centering
+	\includegraphics[height =4cm]{parallelogramcollision.png}
+	\caption{whether inside the parallelogram}
+\end{figure}
+\subsubsection{sphere and sphere}
+\subsection{collision adjustment}
+This is much easier to implement than the previous one. Just like the previous one, we need to calculate the distance between the two spheres, and determine whether the distance is shorter than the radius of the sphere which means there may be a collision.
+\subsection{collision handling}
+
+\subsubsection{parallelogram and sphere}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height =4cm]{collision.png}
+	\caption{shpere and parallelogram collision}
+\end{figure}
+Seeing that the wall is unmovable, so the collision only changes the sphere's \textbf{speed}. By the define of elastic Collision:
+\[
+	||V'|| = e\cdot || V ||
+\]
+where $e$ is coefficient of restitution, and we have given the coefficient of restitution on the normal direction and the tangential direction.
+We just separate the incoming $V$ and reverse the them and multiply the coefficient of restitution.
+\subsubsection{sphere and sphere}
+Initial momentum conservation equation:
+\[
+	e \cdot m_{1}v_{1}+m_{2}v_{2}=m_{1}v_{1}^{'}+m_{2}v_{2}^{'}
+\]
+Conservation of kinetic energy equation:
+\[
+	e^2 \cdot( \frac{1}{2}m_{1}v_{1}^{2}+\frac{1}{2}m_{2}v_{2}^{2})=\frac{1}{2}m_{1}v_{1}^{'2}+\frac{1}{2}m_{2}v_{2}^{'2}
+\]
+We will get the new velocity of each object after substitute into the equation.
+\[
+	v_{1}^{'}=\frac{(m_{1}-m_{2})v_{1}+(1+e)m_{2}v_{2}}{ m_{1}+m_{2}  } \\
+	v_{2}^{'}=\frac{(m_{2}-m_{1})v_{2}+(1+e)m_{1}v_{1}}{ m_{1}+m_{2}  }
+\]
+
+\section{Results}
+ mp4 files in the report dir.
+\end{document}

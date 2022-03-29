@@ -1,0 +1,5 @@
+BasedOnStyle: Google
+UseTab: Never
+SortIncludes: Never
+DerivePointerAlignment: false
+PointerAlignment: Right
